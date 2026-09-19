@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yuki's retro desktop-inspired personal homepage." />
+  <title>YUKI INSTITUTO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="desktop-shell" aria-label="Yuki desktop homepage">
+    <header class="topbar">
+      <strong class="brand">YUKI INSTITUTO</strong>
+      <div class="system-tray" aria-label="System status">
+        <span>▰</span><span>◊</span><span>◉</span><span>⌕</span><span id="clock"></span>
+      </div>
+    </header>
+
+    <section class="desktop">
+      <div class="desktop-icons left-icons">
+        <a class="shortcut" href="#home"><span class="glyph">⌂</span><span>homepage</span></a>
+        <a class="shortcut" href="#files"><span class="glyph">♫</span><span>works</span></a>
+        <a class="shortcut" href="mailto:yuki@example.com"><span class="glyph">✉</span><span>e-mail</span></a>
+        <a class="shortcut" href="#about"><span class="glyph">▤</span><span>about.doc</span></a>
+      </div>
+
+      <div class="desktop-icons second-icons">
+        <a class="shortcut" href="#voice"><span class="glyph">◖</span><span>voicebank</span></a>
+      </div>
+
+      <article class="window note" id="home">
+        <div class="note-toolbar">
+          <div class="toolbar-left"><span>‹</span><b>Note</b></div>
+          <div class="toolbar-right"><span>⇧</span><span>✎</span></div>
+        </div>
+        <div class="note-body">
+          <h1>Congrats, You Found Yuki's Website</h1>
+          <p>Hi, I'm Yuki. This little corner of the web is a playful desktop for my projects, experiments, music, and design notes.</p>
+          <p>Everything here is arranged like an old-school personal computer because ordinary portfolios are far too sensible.</p>
+          <p>Explore the folders, open the little windows, and make yourself at home.</p>
+        </div>
+        <div class="note-actions"><span>☷</span><span>▣</span><span>✦</span><span>✐</span></div>
+      </article>
+
+      <article class="window social-popout">
+        <div class="social-icon">▶</div>
+        <div>
+          <strong>@Yuki</strong>
+          <p>I make things on the internet.</p>
+        </div>
+        <div class="social-buttons">
+          <a href="#about">Wow</a>
+          <a href="#about">Cool</a>
+        </div>
+      </article>
+
+      <article class="window search-window">
+        <label class="search-box">
+          <span>⌕</span>
+          <span class="caret" aria-hidden="true"></span>
+          <input type="text" placeholder="Search..." aria-label="Search" />
+        </label>
+      </article>
+
+      <article class="window chat-window">
+        <div class="window-cap green"><span class="dots">● ● ●</span></div>
+        <div class="chat-body">
+          <div class="message"><span class="avatar">☺</span><span class="bubble">Here’s Yuki’s contact desk.</span></div>
+          <div class="message"><span class="avatar">☺</span><span class="bubble">Say hi or ask about a project.</span></div>
+        </div>
+        <div class="send-row"><a href="mailto:yuki@example.com">Send</a></div>
+      </article>
+
+      <article class="window player-window">
+        <div class="window-cap blue"><span class="dots">● ● ●</span></div>
+        <div class="player-controls">
+          <button type="button" disabled>◀</button>
+          <button type="button" id="playButton" class="play-button">▶</button>
+          <button type="button" disabled>▶</button>
+        </div>
+        <p id="trackLabel">Yuki's Theme — demo loop</p>
+      </article>
+
+      <article class="window folders-window" id="files">
+        <div class="window-cap coral"><span class="dots">● ● ●</span></div>
+        <div class="folder-grid">
+          <a href="#about"><span class="folder">▰</span><span>README</span></a>
+          <a href="#voice"><span class="folder">▰</span><span>PROJECTS</span></a>
+          <a href="#files"><span class="folder">▰</span><span>ARCHIVE</span></a>
+          <a href="#files"><span class="folder">▰</span><span>MEDIA</span></a>
+        </div>
+        <div class="fake-scroll-x"><span></span></div>
+        <div class="fake-scroll-y"><span></span></div>
+      </article>
+
+      <article class="about-card" id="about">
+        <h2>About Yuki</h2>
+        <p>Designer, maker, and collector of tiny digital details.</p>
+      </article>
+
+      <div id="voice" class="voice-anchor" aria-hidden="true"></div>
+
+      <nav class="dock" aria-label="Main navigation">
+        <a href="#home" title="Home">⌂</a>
+        <a href="#files" title="Works">♫</a>
+        <a href="#voice" title="Voice">◖</a>
+        <a href="mailto:yuki@example.com" title="Contact">✉</a>
+        <a href="#about" title="About">▤</a>
+      </nav>
+    </section>
+  </main>
+
+  <section class="mobile-card">
+    <div class="mobile-icon">▣</div>
+    <p>Yuki's desktop is best viewed on a larger screen. Mobile support is intentionally minimal for now.</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

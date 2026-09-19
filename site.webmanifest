@@ -1,0 +1,8 @@
+{
+  "name": "Yuki Instituto",
+  "short_name": "Yuki",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#e8d2c0",
+  "theme_color": "#f8ac00"
+}

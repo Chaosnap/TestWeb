@@ -3,6 +3,19 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>README · YUKI INSTITUTO</title><link rel="stylesheet" href="../styles.css">
+  <style>
+    .browser-tabs{position:relative}
+    .browser-tab{color:#5F3B28;background:#FFAAA7}
+    .browser-tab.active{background:#FC6F60!important;color:#F5ECDC!important}
+    .browser-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:#FC6F60;z-index:2}
+    .browser-tab:not(.active):hover{background:#5F3B28;color:#F5ECDC}
+    .browser-plus{background:#F5ECDC;color:#5F3B28}
+    .browser-tab-spacer{flex:1;background:#F5ECDC}
+    .browser-controls{width:112px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;background:#F5ECDC}
+    .browser-controls img{height:14px;width:auto}
+    .browser-chrome{padding-left:15px;padding-right:15px}
+    .status-bar img{height:20px!important;width:auto!important}
+  </style>
 </head>
 <body>
 <main class="desktop-window">
@@ -23,7 +36,13 @@
     </article>
 
     <article class="window browser-window" id="termsGate">
-      <div class="browser-tabs"><button class="browser-tab active" type="button" data-lang="en">ENGLISH</button><button class="browser-tab" type="button" data-lang="zh">中文</button><div class="browser-plus">＋</div></div>
+      <div class="browser-tabs">
+        <button class="browser-tab active" type="button" data-lang="en">ENGLISH</button>
+        <button class="browser-tab" type="button" data-lang="zh">中文</button>
+        <div class="browser-plus">＋</div>
+        <div class="browser-tab-spacer"></div>
+        <div class="browser-controls"><img src="https://oakinstituto.top/svg/1buttons.svg" alt="Window controls"></div>
+      </div>
       <div class="browser-chrome"><span class="chrome-button">←</span><span class="chrome-button">→</span><span>⌕</span><div class="address"></div><span class="chrome-button">↻</span></div>
       <div class="browser-body">
         <section class="language-panel active" data-panel="en">

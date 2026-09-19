@@ -1,120 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Yuki's retro desktop-inspired personal homepage." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Yuki's retro desktop personal website.">
+  <meta name="theme-color" content="#f8ac00">
   <title>YUKI INSTITUTO</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <main class="desktop-shell" aria-label="Yuki desktop homepage">
-    <header class="topbar">
-      <strong class="brand">YUKI INSTITUTO</strong>
-      <div class="system-tray" aria-label="System status">
-        <span>▰</span><span>◊</span><span>◉</span><span>⌕</span><span id="clock"></span>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 64 64"><path d="M8 30 32 9l24 21v25H39V39H25v16H8Z"/><path d="M19 24v-9h9"/></symbol>
+    <symbol id="i-note" viewBox="0 0 64 64"><rect x="11" y="7" width="42" height="50" rx="4"/><path d="M20 20h24M20 29h24M20 38h18M20 47h12"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 64 64"><rect x="7" y="13" width="50" height="38" rx="5"/><path d="m9 17 23 19 23-19"/></symbol>
+    <symbol id="i-voice" viewBox="0 0 64 64"><rect x="24" y="8" width="16" height="31" rx="8"/><path d="M16 31c0 10 7 17 16 17s16-7 16-17M32 48v8M23 56h18"/></symbol>
+    <symbol id="i-music" viewBox="0 0 64 64"><path d="M24 46V17l29-6v29"/><ellipse cx="16" cy="47" rx="8" ry="6"/><ellipse cx="45" cy="41" rx="8" ry="6"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 64 64"><path d="M6 18h20l5 6h27v29H6Z"/><path d="M6 18V12h18l5 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 64 64"><circle cx="28" cy="28" r="17"/><path d="m41 41 14 14"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 64 64"><path d="M8 24c14-12 34-12 48 0M16 34c10-8 22-8 32 0M25 44c5-4 9-4 14 0"/><circle cx="32" cy="52" r="2"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 64 64"><rect x="9" y="19" width="43" height="27" rx="4"/><path d="M53 27h4v11h-4M15 25h27v15H15Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 64 64"><path d="m23 15 27 17-27 17Z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 64 64"><rect x="7" y="15" width="50" height="34" rx="10"/><path d="m28 24 14 8-14 8Z"/></symbol>
+    <symbol id="i-face" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24"/><circle cx="24" cy="27" r="2"/><circle cx="40" cy="27" r="2"/><path d="M22 38c6 7 14 7 20 0"/></symbol>
+    <symbol id="i-list" viewBox="0 0 64 64"><path d="M23 17h32M23 32h32M23 47h32"/><circle cx="11" cy="17" r="3"/><circle cx="11" cy="32" r="3"/><circle cx="11" cy="47" r="3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 64 64"><path d="M8 20h12l5-7h14l5 7h12v32H8Z"/><circle cx="32" cy="36" r="10"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 64 64"><path d="m13 48-3 9 9-3 34-34-6-6Z"/><path d="m41 20 6 6"/></symbol>
+    <symbol id="i-share" viewBox="0 0 64 64"><path d="M32 9v33M21 20 32 9l11 11"/><path d="M14 31v22h36V31"/></symbol>
+  </svg>
+
+  <main class="desktop-window" aria-label="Yuki desktop">
+    <header class="title-bar">
+      <span class="brand">YUKI INSTITUTO</span>
+      <div class="status-bar" aria-label="System status">
+        <svg class="status-icon"><use href="#i-battery"/></svg>
+        <span class="bt">ᛒ</span>
+        <svg class="status-icon"><use href="#i-wifi"/></svg>
+        <svg class="status-icon"><use href="#i-search"/></svg>
+        <time id="datetime">Sep 19 23:00</time>
       </div>
     </header>
 
-    <section class="desktop">
-      <div class="desktop-icons left-icons">
-        <a class="shortcut" href="#home"><span class="glyph">⌂</span><span>homepage</span></a>
-        <a class="shortcut" href="#files"><span class="glyph">♫</span><span>works</span></a>
-        <a class="shortcut" href="mailto:yuki@example.com"><span class="glyph">✉</span><span>e-mail</span></a>
-        <a class="shortcut" href="#about"><span class="glyph">▤</span><span>about.doc</span></a>
+    <section class="desktop" id="desktop">
+      <div class="shortcut-column shortcut-column-a" data-search-zone>
+        <a class="desktop-shortcut" href="./" data-search="homepage home yuki">
+          <svg><use href="#i-home"/></svg><span>homepage</span>
+        </a>
+        <a class="desktop-shortcut" href="./readme/" data-search="vsqx ust readme files works">
+          <svg><use href="#i-music"/></svg><span>vsqx/ust</span>
+        </a>
+        <a class="desktop-shortcut" href="./contact/" data-search="email mail contact">
+          <svg><use href="#i-mail"/></svg><span>e-mail</span>
+        </a>
+        <a class="desktop-shortcut" href="./about/" data-search="about yuki profile">
+          <svg><use href="#i-note"/></svg><span>about.doc</span>
+        </a>
       </div>
 
-      <div class="desktop-icons second-icons">
-        <a class="shortcut" href="#voice"><span class="glyph">◖</span><span>voicebank</span></a>
+      <div class="shortcut-column shortcut-column-b" data-search-zone>
+        <a class="desktop-shortcut" href="./voicebank/" data-search="voicebank voice audio">
+          <svg><use href="#i-voice"/></svg><span>voicebank</span>
+        </a>
       </div>
 
-      <article class="window note" id="home">
-        <div class="note-toolbar">
-          <div class="toolbar-left"><span>‹</span><b>Note</b></div>
-          <div class="toolbar-right"><span>⇧</span><span>✎</span></div>
+      <article class="window note-window draggable" data-window="note">
+        <div class="note-title drag-handle">
+          <div><button class="plain-btn" aria-label="Back">‹</button><strong>Note</strong></div>
+          <div><svg><use href="#i-share"/></svg><svg><use href="#i-pen"/></svg></div>
         </div>
-        <div class="note-body">
-          <h1>Congrats, You Found Yuki's Website</h1>
-          <p>Hi, I'm Yuki. This little corner of the web is a playful desktop for my projects, experiments, music, and design notes.</p>
-          <p>Everything here is arranged like an old-school personal computer because ordinary portfolios are far too sensible.</p>
-          <p>Explore the folders, open the little windows, and make yourself at home.</p>
+        <div class="note-copy">
+          <h1>Congrats, You Discovered Yuki's Website</h1>
+          <p>This is Yuki's little desktop on the internet — a place for music, design, experiments and whatever else ends up here.</p>
+          <p>The interface is intentionally overbuilt: chunky borders, fake windows, tiny folders and all.</p>
+          <p>Open the icons around the desktop to explore the rest of the site.</p>
         </div>
-        <div class="note-actions"><span>☷</span><span>▣</span><span>✦</span><span>✐</span></div>
-      </article>
-
-      <article class="window social-popout">
-        <div class="social-icon">▶</div>
-        <div>
-          <strong>@Yuki</strong>
-          <p>I make things on the internet.</p>
-        </div>
-        <div class="social-buttons">
-          <a href="#about">Wow</a>
-          <a href="#about">Cool</a>
+        <div class="note-toolbar" aria-hidden="true">
+          <svg><use href="#i-list"/></svg><svg><use href="#i-camera"/></svg><span>✦</span><svg><use href="#i-pen"/></svg>
         </div>
       </article>
 
-      <article class="window search-window">
-        <label class="search-box">
-          <span>⌕</span>
-          <span class="caret" aria-hidden="true"></span>
-          <input type="text" placeholder="Search..." aria-label="Search" />
+      <article class="window social-window draggable" data-window="social">
+        <div class="social-logo"><svg><use href="#i-youtube"/></svg></div>
+        <div class="social-copy"><strong>@Yuki</strong><p>I have a corner of the internet.</p></div>
+        <div class="social-actions"><a href="./about/">Wow</a><a href="./about/">Cool</a></div>
+      </article>
+
+      <article class="window search-window draggable" data-window="search">
+        <label class="search-inner">
+          <svg><use href="#i-search"/></svg>
+          <span class="blink-caret" aria-hidden="true"></span>
+          <input id="desktopSearch" type="search" placeholder="Search..." autocomplete="off" aria-label="Search desktop icons">
         </label>
+        <div id="searchHint" class="search-hint" aria-live="polite"></div>
       </article>
 
-      <article class="window chat-window">
-        <div class="window-cap green"><span class="dots">● ● ●</span></div>
-        <div class="chat-body">
-          <div class="message"><span class="avatar">☺</span><span class="bubble">Here’s Yuki’s contact desk.</span></div>
-          <div class="message"><span class="avatar">☺</span><span class="bubble">Say hi or ask about a project.</span></div>
-        </div>
-        <div class="send-row"><a href="mailto:yuki@example.com">Send</a></div>
-      </article>
-
-      <article class="window player-window">
-        <div class="window-cap blue"><span class="dots">● ● ●</span></div>
+      <article class="window player-window draggable" data-window="player">
+        <div class="window-cap blue drag-handle"><span class="cap-buttons">● ● ●</span></div>
         <div class="player-controls">
-          <button type="button" disabled>◀</button>
-          <button type="button" id="playButton" class="play-button">▶</button>
-          <button type="button" disabled>▶</button>
+          <button class="transport muted" type="button" aria-label="Previous">◀</button>
+          <button class="play" id="playPauseBtn" type="button" aria-label="Play Yuki theme"><svg><use href="#i-play"/></svg></button>
+          <button class="transport muted" type="button" aria-label="Next">▶</button>
         </div>
-        <p id="trackLabel">Yuki's Theme — demo loop</p>
+        <div class="track-line"><span id="trackTitle">Yuki.exe (8-bit demo)</span><span id="trackTime">00:00</span></div>
       </article>
 
-      <article class="window folders-window" id="files">
-        <div class="window-cap coral"><span class="dots">● ● ●</span></div>
-        <div class="folder-grid">
-          <a href="#about"><span class="folder">▰</span><span>README</span></a>
-          <a href="#voice"><span class="folder">▰</span><span>PROJECTS</span></a>
-          <a href="#files"><span class="folder">▰</span><span>ARCHIVE</span></a>
-          <a href="#files"><span class="folder">▰</span><span>MEDIA</span></a>
+      <article class="window chat-window draggable" data-window="chat">
+        <div class="window-cap green drag-handle"><span class="cap-buttons">● ● ●</span></div>
+        <div class="chat-content">
+          <div class="chat-message"><svg class="avatar"><use href="#i-face"/></svg><span>Here's Yuki's contact info.</span></div>
+          <div class="chat-message"><svg class="avatar"><use href="#i-face"/></svg><span>Open the contact page or whatever.</span></div>
         </div>
-        <div class="fake-scroll-x"><span></span></div>
-        <div class="fake-scroll-y"><span></span></div>
+        <div class="send-section"><a href="./contact/">Send</a></div>
       </article>
 
-      <article class="about-card" id="about">
-        <h2>About Yuki</h2>
-        <p>Designer, maker, and collector of tiny digital details.</p>
+      <article class="window folders-window draggable" data-window="folders">
+        <div class="window-cap coral drag-handle"><span class="cap-buttons">● ● ●</span></div>
+        <div class="folder-grid" data-search-zone>
+          <a href="./readme/" data-search="readme"><svg><use href="#i-folder"/></svg><span>README</span></a>
+          <a href="./readme/#vsqx" data-search="vsqx"><svg><use href="#i-folder"/></svg><span>VSQXs</span></a>
+          <a href="./readme/#ust" data-search="ust"><svg><use href="#i-folder"/></svg><span>USTs</span></a>
+          <a href="./voicebank/" data-search="instrumental voicebank"><svg><use href="#i-folder"/></svg><span>Instrumental</span></a>
+        </div>
+        <div class="fake-scrollbar horizontal"><span></span></div>
+        <div class="fake-scrollbar vertical"><span></span></div>
       </article>
 
-      <div id="voice" class="voice-anchor" aria-hidden="true"></div>
-
-      <nav class="dock" aria-label="Main navigation">
-        <a href="#home" title="Home">⌂</a>
-        <a href="#files" title="Works">♫</a>
-        <a href="#voice" title="Voice">◖</a>
-        <a href="mailto:yuki@example.com" title="Contact">✉</a>
-        <a href="#about" title="About">▤</a>
+      <nav class="taskbar" aria-label="Primary navigation">
+        <a href="./" aria-label="Home"><svg><use href="#i-home"/></svg></a>
+        <a href="./readme/" aria-label="Files"><svg><use href="#i-music"/></svg></a>
+        <a href="./voicebank/" aria-label="Voicebank"><svg><use href="#i-voice"/></svg></a>
+        <a href="./contact/" aria-label="Contact"><svg><use href="#i-mail"/></svg></a>
+        <a href="./about/" aria-label="About"><svg><use href="#i-note"/></svg></a>
       </nav>
     </section>
   </main>
 
-  <section class="mobile-card">
-    <div class="mobile-icon">▣</div>
-    <p>Yuki's desktop is best viewed on a larger screen. Mobile support is intentionally minimal for now.</p>
+  <section class="mobile-message">
+    <svg><use href="#i-home"/></svg>
+    <p>Yuki Instituto is designed as a desktop-first site. Rotate your device or open it on a larger screen for the full experience.</p>
+    <div class="mobile-links"><a href="./about/">About</a><a href="./contact/">Contact</a><a href="./readme/">Files</a></div>
   </section>
 
-  <script src="script.js"></script>
+  <noscript><div class="noscript">JavaScript is optional, but the clock, search, dragging and music demo need it.</div></noscript>
+  <script src="./script.js"></script>
 </body>
 </html>

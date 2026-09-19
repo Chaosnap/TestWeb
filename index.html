@@ -1,57 +1,110 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f8ad00"><meta name="description" content="GuanHua Yu's retro desktop personal website">
-<title>YUKI INSTITUTO</title><link rel="stylesheet" href="./styles.css"><link rel="manifest" href="./site.webmanifest"></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8ac00">
+  <meta name="description" content="GuanHua Yu's retro desktop personal website">
+  <title>YUKI INSTITUTO</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
 <body>
-<main class="desktop-window"><header class="title-bar"><span class="brand">YUKI INSTITUTO</span><div class="status-bar">
-<svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#battery"/></svg><span class="bt">ᛒ</span><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#wifi"/></svg><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#search"/></svg><time id="datetime"></time></div></header>
-<section class="desktop homepage-desktop">
-<div class="shortcut-column shortcut-a">
-<a class="desktop-shortcut" href="./" data-search="home homepage"><svg class="icon"><use href="./assets/icons.svg#computer"/></svg><span>homepage</span></a>
-<a class="desktop-shortcut" href="./readme/" data-search="archive files folders readme"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg><span>archive</span></a>
-<a class="desktop-shortcut" href="./contact/" data-search="email contact mail"><svg class="icon"><use href="./assets/icons.svg#mail"/></svg><span>e-mail</span></a>
-<a class="desktop-shortcut" href="./about/" data-search="about doc guanhua"><svg class="icon"><use href="./assets/icons.svg#document"/></svg><span>about.doc</span></a>
-</div>
-<div class="shortcut-column shortcut-b">
-<a class="desktop-shortcut" href="./profile/" data-search="voicebank profile guanhua yuki personal"><svg class="icon"><use href="./assets/icons.svg#music"/></svg><span>voicebank</span></a>
-</div>
+  <main class="desktop-window">
+    <header class="title-bar">
+      <span class="brand">YUKI INSTITUTO</span>
+      <div class="status-bar">
+        <img src="https://oakinstituto.top/svg/1battery.svg" alt="Battery">
+        <img src="https://oakinstituto.top/svg/1bluetooth.svg" alt="Bluetooth">
+        <img src="https://oakinstituto.top/svg/1wifi.svg" alt="WiFi">
+        <img src="https://oakinstituto.top/svg/1search.svg" alt="Search">
+        <time id="datetime"></time>
+      </div>
+    </header>
 
-<article class="window note-window draggable"><div class="note-title drag-handle"><div><button aria-label="back">‹</button><strong>Note</strong></div><div><span>⇧</span><span>⊙</span></div></div>
-<div class="note-copy"><h1>Congrats, You Discovered My Website</h1>
-<p>This is GuanHua Yu. I keep this little desktop around as a place for notes, music, web experiments and whatever else deserves not to disappear.</p>
-<p>Everything here is deliberately a little overbuilt: chunky borders, fake windows, folders, tiny controls and some desktop clutter.</p>
-<p>The archive has four folders — ReadMe, Note, Blog and Music. The front door asks you to read a short note before entering.</p>
-<p>If something catches your attention, feel free to poke around or send me a message.</p></div>
-<div class="note-toolbar"><span>☷</span><span>▣</span><span>◉</span><span>✎</span></div></article>
+    <section class="desktop oak-home">
+      <div class="oak-shortcuts oak-shortcuts-main">
+        <a class="oak-shortcut" href="./" data-search="home homepage"><img src="https://oakinstituto.top/svg/0home.svg" alt="Home"><span>homepage</span></a>
+        <a class="oak-shortcut" href="./readme/" data-search="archive readme note blog music"><img src="https://oakinstituto.top/svg/0ust.svg" alt="Archive"><span>archive</span></a>
+        <a class="oak-shortcut" href="./contact/" data-search="email contact"><img src="https://oakinstituto.top/svg/1contact.svg" alt="Email"><span>e-mail</span></a>
+        <a class="oak-shortcut" href="./about/" data-search="about guanhua"><img src="https://oakinstituto.top/svg/1about.svg" alt="About"><span>about.doc</span></a>
+      </div>
+      <div class="oak-shortcuts oak-shortcuts-secondary">
+        <a class="oak-shortcut" href="./profile/" data-search="voicebank profile guanhua yuki"><img src="https://oakinstituto.top/svg/0voicebank.svg" alt="Voicebank"><span>voicebank</span></a>
+      </div>
 
-<article class="window social-window draggable"><div class="social-badge"></div><div class="social-copy"><strong>@GuanHuaYu</strong><p>I post things on bilibili.</p></div>
-<div class="social-actions"><a href="https://space.bilibili.com/2087892128" target="_blank" rel="noopener">Wow</a><a href="./contact/">Cool</a></div></article>
+      <article class="window oak-note draggable">
+        <div class="oak-note-head drag-handle">
+          <div><img src="https://oakinstituto.top/svg/1left-arrow.svg" alt="Back"><b>Note</b></div>
+          <div><img src="https://oakinstituto.top/svg/1share.svg" alt="Share"><img src="https://oakinstituto.top/svg/1edit.svg" alt="Edit"></div>
+        </div>
+        <div class="oak-note-body">
+          <h1>Congrats, You Discovered My Website</h1>
+          <p>This is GuanHua Yu. I keep this little desktop around as a place for notes, music, web experiments and whatever else deserves not to disappear.</p>
+          <p>Everything here is deliberately a little overbuilt: chunky borders, fake windows, folders, tiny controls and some desktop clutter.</p>
+          <p>Contact info and the archive are scattered around somewhere. Drop me a message if you notice anything broken.</p>
+        </div>
+        <div class="oak-note-icons">
+          <img src="https://oakinstituto.top/svg/1list.svg" alt="List">
+          <img src="https://oakinstituto.top/svg/1camera.svg" alt="Camera">
+          <img src="https://oakinstituto.top/svg/1draw.svg" alt="Draw">
+          <img src="https://oakinstituto.top/svg/1write.svg" alt="Write">
+        </div>
+      </article>
 
-<article class="window search-window draggable"><label class="search-inner"><svg class="icon"><use href="./assets/icons.svg#search"/></svg><input id="desktopSearch" type="search" placeholder="Search..." autocomplete="off"></label><div id="searchHint" class="search-hint"></div></article>
+      <article class="window oak-social draggable">
+        <img class="oak-social-icon" src="https://oakinstituto.top/svg/1utube.svg" alt="Social">
+        <div><strong>@GuanHuaYu</strong><p>I post things on bilibili.</p></div>
+        <div class="oak-social-actions"><a href="https://space.bilibili.com/2087892128" target="_blank" rel="noopener">Wow</a><a href="./contact/">Cool</a></div>
+      </article>
 
-<article class="window player-window draggable"><div class="window-cap blue drag-handle"><span class="cap-dots">— □ ×</span></div><div class="player-controls">
-<button class="transport" disabled>◀◀</button><button class="play" id="playPauseBtn" aria-label="Play demo">▶</button><button class="transport" disabled>▶▶</button></div>
-<div class="track-line"><span>GuanHua.exe (8-Bit demo)</span><span id="trackTime">00:00</span></div></article>
+      <article class="window oak-search draggable">
+        <div class="oak-search-icon"><img src="https://oakinstituto.top/svg/0search.svg" alt="Search"></div>
+        <span class="blink-caret"></span>
+        <input id="desktopSearch" type="search" placeholder="Search..." autocomplete="off" aria-label="Search desktop">
+        <span id="searchHint" class="search-hint"></span>
+      </article>
 
-<article class="window chat-window draggable"><div class="window-cap teal drag-handle"><span class="cap-dots">— □ ×</span></div><div class="chat-content">
-<div class="chat-message"><span class="chat-face">☺</span><span>Here's my contact info.</span></div>
-<div class="chat-message"><span class="chat-face">☺</span><span>Email me or whatever.</span></div></div>
-<div class="send-section"><a href="./contact/">Send</a></div></article>
+      <article class="window oak-player draggable">
+        <div class="oak-window-bar blue drag-handle"><img src="https://oakinstituto.top/svg/1buttons.svg" alt="Window controls"></div>
+        <div class="oak-player-controls">
+          <img class="disabled-control" src="https://oakinstituto.top/svg/1previous.svg" alt="Previous">
+          <button id="playPauseBtn" class="oak-play-button" aria-label="Play demo"><img id="playPauseIcon" src="https://oakinstituto.top/svg/1play.svg" alt="Play"></button>
+          <img class="disabled-control" src="https://oakinstituto.top/svg/1next.svg" alt="Next">
+        </div>
+        <div class="oak-track"><span>GuanHua.exe (8-Bit)</span><span id="trackTime">00:00</span></div>
+      </article>
 
-<article class="window folders-window draggable"><div class="window-cap coral drag-handle"><span class="cap-dots">— □ ×</span></div>
-<div class="folder-grid">
-<a href="./readme/" data-search="readme folder"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg><span>ReadMe</span></a>
-<a href="./readme/" data-search="note folder"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg><span>Note</span></a>
-<a href="./readme/" data-search="blog folder"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg><span>Blog</span></a>
-<a href="./readme/" data-search="music folder"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg><span>Music</span></a></div>
-<div class="fake-scroll-h"><span></span></div><div class="fake-scroll-v"><span></span></div></article>
+      <article class="window oak-chat draggable">
+        <div class="oak-window-bar green drag-handle"><img src="https://oakinstituto.top/svg/1buttons.svg" alt="Window controls"></div>
+        <div class="oak-chat-body">
+          <div><img src="https://oakinstituto.top/svg/0avatarsmiley.svg" alt="Avatar"><span>Here’s my contact info</span></div>
+          <div><img src="https://oakinstituto.top/svg/0avatarsmiley.svg" alt="Avatar"><span>Email me or whatever.</span></div>
+        </div>
+        <div class="oak-send"><a href="./contact/">Send</a></div>
+      </article>
 
-<nav class="taskbar" aria-label="navigation">
-<a href="./" aria-label="Home"><svg class="icon"><use href="./assets/icons.svg#computer"/></svg></a>
-<a href="./readme/" aria-label="Archive"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg></a>
-<a href="./profile/" aria-label="Voicebank / Profile"><svg class="icon"><use href="./assets/icons.svg#music"/></svg></a>
-<a href="./contact/" aria-label="Contact"><svg class="icon"><use href="./assets/icons.svg#chat"/></svg></a>
-<a href="./about/" aria-label="About"><svg class="icon"><use href="./assets/icons.svg#document"/></svg></a>
-</nav>
-</section></main>
-<section class="mobile-message"><h1>YUKI INSTITUTO</h1><p>This site is designed as a desktop interface. Use a larger screen for the full layout.</p><div class="mobile-links"><a href="./profile/">Voicebank</a><a href="./about/">About</a><a href="./contact/">Contact</a><a href="./readme/">Archive</a></div></section>
-<script src="./script.js"></script></body></html>
+      <article class="window oak-folders draggable">
+        <div class="oak-window-bar red drag-handle"><img src="https://oakinstituto.top/svg/1buttons.svg" alt="Window controls"></div>
+        <div class="oak-folder-grid">
+          <a href="./readme/" data-search="readme"><img src="https://oakinstituto.top/svg/1folder.svg" alt="ReadMe"><span>ReadMe</span></a>
+          <a href="./readme/" data-search="note"><img src="https://oakinstituto.top/svg/1folder.svg" alt="Note"><span>Note</span></a>
+          <a href="./readme/" data-search="blog"><img src="https://oakinstituto.top/svg/1folder.svg" alt="Blog"><span>Blog</span></a>
+          <a href="./readme/" data-search="music"><img src="https://oakinstituto.top/svg/1folder.svg" alt="Music"><span>Music</span></a>
+        </div>
+        <div class="oak-scrollbar horizontal"><span></span></div>
+        <div class="oak-scrollbar vertical"><span></span></div>
+      </article>
+
+      <nav class="taskbar" aria-label="Primary navigation">
+        <a href="./" data-label="Home"><img src="https://oakinstituto.top/svg/0home.svg" alt="Home"></a>
+        <a href="./readme/" data-label="Archive"><img src="https://oakinstituto.top/svg/0ust.svg" alt="Archive"></a>
+        <a href="./profile/" data-label="Voicebank"><img src="https://oakinstituto.top/svg/0voicebank.svg" alt="Voicebank"></a>
+        <a href="./contact/" data-label="Contact"><img src="https://oakinstituto.top/svg/0contact.svg" alt="Contact"></a>
+        <a href="./about/" data-label="About"><img src="https://oakinstituto.top/svg/0about.svg" alt="About"></a>
+      </nav>
+    </section>
+  </main>
+  <section class="mobile-message"><h1>YUKI INSTITUTO</h1><p>This interface is designed for a desktop-size screen.</p></section>
+  <script src="./script.js"></script>
+</body>
+</html>

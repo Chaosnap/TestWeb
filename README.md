@@ -1,6 +1,6 @@
 # TestWeb / YUKI INSTITUTO
 
-Static GitHub Pages personal site for **郁冠华 / Guanhua Yu (Yuki)**.
+Static GitHub Pages personal site for **GuanHua Yu (Yuki)**.
 
 ## Structure
 
@@ -9,7 +9,7 @@ Static GitHub Pages personal site for **郁冠华 / Guanhua Yu (Yuki)**.
 - `/files/` four-folder archive: ReadMe, Note, Blog, Music
 - `/about/` word-processor style about page
 - `/contact/` chat-style contact page
-- `/profile/` personal profile using the supplied character artwork
+- `/profile/` voicebank-style personal profile using the supplied character artwork
 - `/note/`, `/blog/`, `/music/` archive sections
 
 All internal links are relative so the site works correctly at `https://chaosnap.github.io/TestWeb/`.

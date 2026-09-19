@@ -1,5 +1,18 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VOICEBANK · YUKI INSTITUTO</title><link rel="stylesheet" href="../styles.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VOICEBANK · YUKI INSTITUTO</title><link rel="stylesheet" href="../styles.css">
+<style>
+  .status-bar img{height:20px!important;width:auto!important}
+  .vbportrait{background:none!important;position:relative!important;overflow:hidden}
+  .vbportrait::before,.vbportrait::after{display:none!important}
+  .vbportrait .frame-img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;z-index:0!important;pointer-events:none}
+  .vbportrait .character-img{position:relative!important;display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;z-index:2!important}
+  .vbdeslangexpandable{appearance:none!important;-webkit-appearance:none!important;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important;color:#5F3B28!important;font-family:Arial,Helvetica,sans-serif!important;font-weight:400!important;font-size:16px!important;cursor:pointer!important;display:flex!important;align-items:center!important;gap:5px!important;padding:10px 15px 5px!important;margin:0!important;width:100%!important;text-align:left!important}
+  .vbdeslangexpandable::before{content:"▶";display:inline-block;margin-right:5px;transition:transform .3s}
+  .vbdeslangexpandable.expanded::before{transform:rotate(90deg)}
+  .vbdeslangexpandable:hover{background:transparent!important;color:#5F3B28!important}
+  .vbdeslangcontent{display:none;margin-left:20px}
+  .vbdeslangcontent p{font-family:Arial,Helvetica,sans-serif!important;font-size:16px!important;line-height:1.5!important;font-weight:400!important;margin:0!important;padding:10px 15px 15px!important;max-width:320px}
+</style></head>
 <body class="profile-page"><main class="desktop-window"><header class="title-bar"><span class="brand">YUKI INSTITUTO - VOICEBANK</span><div class="status-bar"><img src="https://oakinstituto.top/svg/1battery.svg" alt="Battery"><img src="https://oakinstituto.top/svg/1bluetooth.svg" alt="Bluetooth"><img src="https://oakinstituto.top/svg/1wifi.svg" alt="WiFi"><img src="https://oakinstituto.top/svg/1search.svg" alt="Search"><time id="datetime"></time></div></header>
 <section class="desktop page-desktop">
   <div class="oak-shortcuts oak-shortcuts-main"><a class="oak-shortcut" href="../"><img src="https://oakinstituto.top/svg/0home.svg" alt="Home"><span>homepage</span></a><a class="oak-shortcut" href="../readme/"><img src="https://oakinstituto.top/svg/0ust.svg" alt="Archive"><span>archive</span></a><a class="oak-shortcut" href="../contact/"><img src="https://oakinstituto.top/svg/1contact.svg" alt="Email"><span>e-mail</span></a><a class="oak-shortcut" href="../about/"><img src="https://oakinstituto.top/svg/1about.svg" alt="About"><span>about.doc</span></a></div>
@@ -28,9 +41,9 @@
     <article class="window vbdeslang" id="characterDescription">
       <div class="vbbar"><img src="https://oakinstituto.top/svg/1buttons.svg" alt="Window controls"></div>
       <h2>Character Description</h2>
-      <button class="vbdeslangexpandable" type="button" data-vb-lang="en">English</button>
+      <div class="vbdeslangexpandable" role="button" tabindex="0" data-vb-lang="en">English</div>
       <div class="vbdeslangcontent"><p>GuanHua Yu is quieter in person than this website makes him look. He likes interfaces with visible personality, old desktop metaphors, music, and small digital experiments that feel handmade instead of optimized to death.<br><br>He tends to keep half-finished ideas around longer than he should, mostly because a rough draft can still contain something worth returning to. This site is where those fragments, notes and experiments are allowed to stay visible.</p></div>
-      <button class="vbdeslangexpandable" type="button" data-vb-lang="zh">Chinese</button>
+      <div class="vbdeslangexpandable" role="button" tabindex="0" data-vb-lang="zh">Chinese</div>
       <div class="vbdeslangcontent"><p>GuanHua Yu 本人比這個網站安靜很多。喜歡帶有人味的介面、老式桌面系統、音樂，以及那些看起來有點沒必要、但做起來很有趣的小型數位實驗。<br><br>比起把所有東西整理成一份完美的作品集，更習慣把草稿、片段、筆記和還沒完成的想法先留下來。這個網站就是給這些東西的一個長期存放處。</p></div>
     </article>
 

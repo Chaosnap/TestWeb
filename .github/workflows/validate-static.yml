@@ -1,0 +1,63 @@
+name: Validate static site
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check JavaScript syntax
+        run: node --check script.js
+
+      - name: Check local HTML links
+        shell: python
+        run: |
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote
+
+          root = Path.cwd().resolve()
+          html_files = list(root.rglob('*.html'))
+          broken = []
+
+          class LinkParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  data = dict(attrs)
+                  for key in ('href', 'src'):
+                      if key in data:
+                          self.refs.append(data[key])
+
+          for html_file in html_files:
+              parser = LinkParser()
+              parser.feed(html_file.read_text(encoding='utf-8'))
+              for ref in parser.refs:
+                  if not ref or ref.startswith(('#', 'mailto:', 'tel:', 'data:', 'http://', 'https://')):
+                      continue
+                  clean = unquote(ref.split('#', 1)[0].split('?', 1)[0])
+                  if not clean:
+                      continue
+                  target = (html_file.parent / clean).resolve()
+                  if clean.endswith('/'):
+                      target = target / 'index.html'
+                  if root not in target.parents and target != root:
+                      broken.append((html_file, ref, 'escapes repository root'))
+                  elif not target.exists():
+                      broken.append((html_file, ref, target))
+
+          print(f'Checked {len(html_files)} HTML files.')
+          if broken:
+              for item in broken:
+                  print('BROKEN:', *item)
+              raise SystemExit(1)
+          print('All local links resolved successfully.')

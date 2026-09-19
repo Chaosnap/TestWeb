@@ -22,49 +22,49 @@ svg.icon{width:100%;height:100%;overflow:visible}
 .window{position:absolute;background:var(--cream);border:3px solid var(--ink);border-radius:9px;box-shadow:7px 7px 0 var(--shadow)}
 .window-cap{height:36px;border-bottom:3px solid var(--ink);display:flex;align-items:center;justify-content:flex-end;padding:0 10px}
 .window-cap.coral{background:var(--coral)}.window-cap.teal{background:var(--teal)}.window-cap.blue{background:var(--blue)}.window-cap.lime{background:var(--lime)}
-.cap-dots{letter-spacing:5px;font-size:10px}.drag-handle{cursor:grab}.drag-handle:active{cursor:grabbing}
+.cap-dots{letter-spacing:2px;font-size:13px}.drag-handle{cursor:grab}.drag-handle:active{cursor:grabbing}
 
-.shortcut-column{position:absolute;top:45px;display:grid;gap:28px;z-index:3}.shortcut-a{left:36px}.shortcut-b{left:165px}
+/* Desktop shortcuts stay behind app windows on inner pages. */
+.shortcut-column{position:absolute;top:45px;display:grid;gap:28px;z-index:1}.shortcut-a{left:42px}.shortcut-b{left:178px}
+.homepage-desktop .shortcut-column{z-index:2}
 .desktop-shortcut{width:105px;text-decoration:none;text-align:center;display:grid;justify-items:center;gap:4px;font-size:14px}
 .desktop-shortcut svg{width:58px;height:58px;transition:transform .15s}.desktop-shortcut span{padding:3px 7px;border-radius:5px}
 .desktop-shortcut:hover svg{transform:translateY(-3px) rotate(-2deg)}.desktop-shortcut:hover span{background:var(--ink);color:var(--cream)}
 .desktop-shortcut.is-hidden{opacity:.15;filter:grayscale(1)}
 
-.note-window{left:210px;top:18px;width:360px;z-index:8}
+/* Homepage composition follows the supplied reference: tall note left, search/player centre, folders right. */
+.note-window{left:230px;top:24px;width:365px;min-height:510px;z-index:8}
 .note-title{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 4px;color:#ef9900}
 .note-title>div{display:flex;align-items:center;gap:13px}.note-title button{border:0;background:none;font-size:28px;padding:0;color:#ef9900}
-.note-title svg{width:22px;height:22px}.note-copy{padding:6px 18px 7px}.note-copy h1{font-size:18px;line-height:1.28;margin:0 0 10px}
-.note-copy p{font:500 15px/1.5 Georgia,"Times New Roman",serif;margin:8px 0}.note-toolbar{display:flex;justify-content:space-between;padding:10px 22px 15px;font-size:20px}
+.note-title svg{width:22px;height:22px}.note-copy{padding:8px 20px 8px}.note-copy h1{font-size:18px;line-height:1.28;margin:0 0 14px}
+.note-copy p{font:500 15px/1.55 Georgia,"Times New Roman",serif;margin:12px 0}.note-toolbar{display:flex;justify-content:space-between;padding:12px 24px 17px;font-size:20px}
 .note-toolbar svg{width:21px;height:21px}
-
-.social-window{right:28px;top:36px;width:420px;min-height:106px;padding:16px 16px;display:grid;grid-template-columns:54px 1fr 72px;gap:14px;align-items:center;z-index:6}
+.social-window{right:28px;top:32px;width:420px;min-height:106px;padding:16px;display:grid;grid-template-columns:54px 1fr 72px;gap:14px;align-items:center;z-index:6}
 .social-badge{width:50px;height:50px;border:3px solid var(--ink);border-radius:12px;background:var(--coral);display:grid;place-items:center}
 .social-badge::after{content:"▶";font-size:22px;color:var(--cream)}.social-copy p{margin:5px 0 0;font-size:14px}
 .social-actions{display:grid;gap:7px}.social-actions a{text-decoration:none;border:2px solid var(--ink);border-radius:5px;text-align:center;padding:3px;background:var(--paper);font-size:13px}
 .social-actions a:hover{background:var(--ink);color:var(--cream)}
-
-.search-window{left:555px;top:160px;width:345px;padding:10px;z-index:5}.search-inner{display:flex;align-items:center;gap:9px}
+.search-window{left:620px;top:150px;width:360px;padding:10px;z-index:5}.search-inner{display:flex;align-items:center;gap:9px}
 .search-inner svg{width:25px;height:25px}.search-inner input{width:100%;border:0;outline:none;background:transparent;font-size:16px}
 .search-inner::before{content:"";width:3px;height:24px;background:var(--ink);order:1;animation:blink 1s steps(1) infinite}.search-inner svg{order:0}.search-inner input{order:2}
-.search-hint{font-size:11px;min-height:0}.player-window{left:480px;top:275px;width:332px;z-index:4}
-.player-controls{height:92px;display:flex;align-items:center;justify-content:center;gap:24px}.transport{border:0;background:none;font-size:18px;opacity:.35}
+.search-hint{font-size:11px;min-height:0}.player-window{left:595px;top:275px;width:350px;z-index:5}
+.player-controls{height:92px;display:flex;align-items:center;justify-content:center;gap:24px}.transport{border:0;background:none;font-size:18px;opacity:.55}
 .play{width:52px;height:52px;border:3px solid var(--ink);border-radius:50%;background:transparent;cursor:pointer;font-size:20px}
 .track-line{border-top:1px solid rgba(101,66,46,.25);padding:8px 12px;display:flex;justify-content:space-between;font-size:12px}
-
-.chat-window{left:595px;bottom:115px;width:320px;z-index:7}.chat-content{padding:14px 12px;display:grid;gap:10px}
+.chat-window{left:590px;bottom:116px;width:320px;z-index:6}.chat-content{padding:14px 12px;display:grid;gap:10px}
 .chat-message{display:flex;align-items:center;gap:10px}.chat-face{width:24px;height:24px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:13px}
 .chat-message span:last-child{border:2px solid var(--ink);border-radius:5px;padding:6px 9px;font:500 13px/1.25 Georgia,serif;flex:1}
 .send-section{border-top:2px solid var(--ink);padding:7px 10px;display:flex;justify-content:flex-end}.send-section a{background:var(--teal);color:white;text-decoration:none;border:2px solid var(--ink);border-radius:5px;padding:4px 15px;font-size:13px}
-
 .folders-window{right:34px;bottom:88px;width:360px;height:290px;z-index:4}.folder-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 42px;padding:28px 38px}
 .folder-grid a{text-decoration:none;display:grid;gap:5px;font-size:13px}.folder-grid svg{width:55px;height:55px}
 .fake-scroll-h,.fake-scroll-v{position:absolute;border:3px solid var(--ink);background:var(--paper)}.fake-scroll-h{height:20px;bottom:-3px;left:-3px;right:14px}.fake-scroll-v{width:20px;right:-3px;top:33px;bottom:14px}
 .fake-scroll-h span,.fake-scroll-v span{position:absolute;border:3px solid var(--ink);background:var(--coral);border-radius:12px}.fake-scroll-h span{height:20px;width:160px;left:105px;top:-3px}.fake-scroll-v span{width:20px;height:64px;left:-3px;top:58px}
 
-.taskbar{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);height:72px;min-width:430px;border:3px solid var(--ink);border-radius:18px;background:var(--cream);box-shadow:5px 5px 0 var(--shadow);display:flex;align-items:center;justify-content:center;gap:20px;padding:7px 18px;z-index:30}
-.taskbar a{width:54px;height:54px;transition:transform .15s}.taskbar a:hover{transform:translateY(-5px) scale(1.05)}
+.taskbar{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);height:78px;min-width:462px;border:3px solid var(--ink);border-radius:18px;background:var(--cream);box-shadow:5px 5px 0 var(--shadow);display:flex;align-items:center;justify-content:center;gap:20px;padding:7px 18px;z-index:30}
+.taskbar a{width:58px;height:58px;transition:transform .15s}.taskbar a:hover{transform:translateY(-5px) scale(1.05)}
 
-.browser-window{left:100px;right:100px;top:28px;bottom:105px;overflow:hidden}.browser-tabs{height:50px;border-bottom:3px solid var(--ink);display:flex;background:var(--paper)}
+/* Browser/readme gate: application window always covers shortcut icons when they overlap. */
+.browser-window{left:100px;right:225px;top:28px;bottom:120px;overflow:hidden;z-index:10}.browser-tabs{height:50px;border-bottom:3px solid var(--ink);display:flex;background:var(--paper)}
 .browser-tab{min-width:205px;border-right:3px solid var(--ink);display:grid;place-items:center;font-size:16px}.browser-tab.active{background:#ff8f88;color:white}
 .browser-plus{width:54px;display:grid;place-items:center;font-size:28px}.browser-chrome{height:48px;background:var(--coral);border-bottom:3px solid var(--ink);display:flex;align-items:center;gap:14px;padding:0 16px}
 .address{height:30px;background:var(--paper);border:2px solid var(--ink);border-radius:17px;flex:1}.chrome-button{font-size:26px}
@@ -72,28 +72,29 @@ svg.icon{width:100%;height:100%;overflow:visible}
 .term-list{font:500 15px/1.55 Arial,sans-serif}.term-list li{margin:9px 0}.agree-row{margin:28px 0 18px;display:flex;align-items:center;gap:12px}.agree-row input{width:22px;height:22px;accent-color:var(--teal)}
 .gate-actions{display:flex;gap:14px}.gate-actions button{border:2px solid var(--ink);border-radius:5px;padding:9px 22px;background:var(--coral);color:white;cursor:pointer}.gate-actions button.primary{background:#777}.gate-actions button:disabled{opacity:.45;cursor:not-allowed}
 .browser-footer{text-align:center;font-size:12px;margin-top:32px}
+.preview-folder-window{right:52px;bottom:98px;width:300px;height:330px;z-index:3}.preview-folder-window .folder-grid{gap:28px 26px;padding:34px 28px}.preview-folder-window .folder-grid svg{width:58px;height:58px}
 
-.explorer-window{left:170px;right:155px;top:30px;bottom:110px;overflow:hidden}.explorer-toolbar{height:82px;background:var(--coral);border-bottom:3px solid var(--ink);padding:18px;display:flex;align-items:center;gap:18px}
+.explorer-window{left:170px;right:155px;top:30px;bottom:110px;overflow:hidden;z-index:10}.explorer-toolbar{height:82px;background:var(--coral);border-bottom:3px solid var(--ink);padding:18px;display:flex;align-items:center;gap:18px}
 .explorer-toolbar .address{height:32px}.explorer-body{height:calc(100% - 82px);display:grid;grid-template-columns:190px 1fr;overflow:hidden}
 .explorer-sidebar{background:var(--coral);color:white;padding:18px;font-size:14px}.tree{display:grid;gap:8px}.tree strong{font-size:15px}.tree span{padding-left:18px}
 .file-table{background:var(--cream);overflow:auto}.file-head,.file-row{display:grid;grid-template-columns:1.5fr 180px 150px;align-items:center}
 .file-head{background:var(--ink);color:var(--cream);height:52px;padding:0 16px}.file-row{min-height:82px;border-bottom:1px solid rgba(101,66,46,.3);padding:9px 16px;text-decoration:none}
 .file-row:hover{background:#fffaf0}.file-name{display:flex;align-items:center;gap:14px}.file-name svg{width:52px;height:52px}.file-row small{font-weight:500}
 
-.editor-window{left:250px;right:160px;top:28px;bottom:108px;background:#815943;overflow:hidden}.editor-toolbar{height:78px;padding:18px 76px 10px}.toolbar-pill{height:54px;border-radius:18px;background:var(--cream);display:flex;align-items:center;justify-content:space-around;padding:0 24px;font-family:Georgia,serif;font-size:24px}
+.editor-window{left:250px;right:160px;top:28px;bottom:108px;background:#815943;overflow:hidden;z-index:10}.editor-toolbar{height:78px;padding:18px 76px 10px}.toolbar-pill{height:54px;border-radius:18px;background:var(--cream);display:flex;align-items:center;justify-content:space-around;padding:0 24px;font-family:Georgia,serif;font-size:24px}
 .editor-ruler{height:36px;margin:0 76px;color:var(--cream);border-bottom:2px solid var(--cream);font-size:12px;letter-spacing:6px;white-space:nowrap;overflow:hidden}.editor-body{display:grid;grid-template-columns:55px 1fr 25px;height:calc(100% - 114px);padding:0 54px 0 0}
 .line-numbers{color:#ead7c6;text-align:center;line-height:28px;font-size:12px;padding-top:12px}.document-page{background:var(--cream);padding:28px 64px;overflow:auto;font:500 16px/1.45 Georgia,"Noto Serif SC",serif}
 .document-page h1{font-family:"Courier New",monospace;font-size:22px}.document-page p{margin:0 0 18px}.editor-scroll{margin:118px 0 60px;background:var(--blue);border:3px solid var(--ink);border-radius:12px}
 
-.contact-window{left:250px;right:250px;top:28px;bottom:150px;overflow:hidden}.contact-grid{height:calc(100% - 36px);display:grid;grid-template-columns:310px 1fr}
+.contact-window{left:250px;right:250px;top:28px;bottom:150px;overflow:hidden;z-index:10}.contact-grid{height:calc(100% - 36px);display:grid;grid-template-columns:310px 1fr}
 .contact-left{border-right:3px solid var(--ink)}.contact-search{height:58px;border-bottom:3px solid var(--ink);display:flex;align-items:center;padding:9px 16px;gap:10px}.contact-search .address{height:30px}
 .contact-item{min-height:72px;border-bottom:2px solid var(--ink);padding:14px 18px;font-size:13px}.contact-item.active{background:var(--teal);color:white}.contact-item strong{display:block;font-size:15px;margin-bottom:4px}
 .contact-main{display:grid;grid-template-rows:56px 1fr 56px}.contact-head{border-bottom:3px solid var(--ink);display:flex;align-items:center;padding:0 18px}
 .chat-thread{padding:22px 16px;overflow:auto;display:grid;align-content:start;gap:16px}.chat-bubble-row{display:flex;align-items:center;gap:12px}.round-face{width:42px;height:42px;border-radius:50%;border:2px solid var(--ink);background:var(--teal);display:grid;place-items:center}
 .contact-bubble{background:var(--ink);color:var(--cream);border-radius:18px;padding:12px 18px;max-width:460px}.contact-bubble a{color:inherit}.contact-compose{border-top:3px solid var(--ink);display:flex;align-items:center;padding:9px 16px}.compose-box{height:34px;border:2px solid var(--ink);border-radius:8px;flex:1}
-.mini-contact{left:530px;bottom:108px;width:320px;z-index:2}
+.mini-contact{left:530px;bottom:108px;width:320px;z-index:4}
 
-.profile-layout{position:absolute;inset:28px 60px 105px 210px}.portrait-window{left:0;top:14px;width:370px;height:610px;overflow:hidden;background:#f9efdf}
+.profile-layout{position:absolute;inset:28px 60px 105px 210px;z-index:8}.portrait-window{left:0;top:14px;width:370px;height:610px;overflow:hidden;background:#f9efdf}
 .portrait-window .window-cap{height:38px}.portrait-wrap{height:calc(100% - 38px);display:grid;place-items:center;background:
  linear-gradient(rgba(101,66,46,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(101,66,46,.14) 1px,transparent 1px),#fff6e9;background-size:28px 28px}
 .portrait-wrap img{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}
@@ -102,7 +103,7 @@ svg.icon{width:100%;height:100%;overflow:visible}
 .profile-actions{left:365px;bottom:30px;width:340px;padding:20px;text-align:center}.profile-actions h3{font-size:18px}.profile-buttons{display:flex;gap:18px}.profile-buttons a{flex:1;text-decoration:none;background:var(--ink);color:var(--cream);padding:10px;border-radius:5px}
 .profile-status{right:20px;bottom:45px;width:200px;padding:22px}.profile-status strong{display:block;margin-top:12px}
 
-.content-card{left:210px;right:210px;top:52px;bottom:135px;padding:26px 34px;overflow:auto}.content-card h1{margin-top:0}.content-card p,.content-card li{font:500 16px/1.6 Georgia,"Noto Serif SC",serif}
+.content-card{left:210px;right:210px;top:52px;bottom:135px;padding:26px 34px;overflow:auto;z-index:10}.content-card h1{margin-top:0}.content-card p,.content-card li{font:500 16px/1.6 Georgia,"Noto Serif SC",serif}
 .music-list{display:grid;gap:12px}.music-item{border:2px solid var(--ink);border-radius:8px;padding:14px;display:flex;justify-content:space-between;background:var(--paper)}
 
 .mobile-message{display:none}.noscript{position:fixed;bottom:10px;left:10px;background:white;border:2px solid var(--ink);padding:8px}

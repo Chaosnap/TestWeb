@@ -4,12 +4,20 @@
   const tick = () => { if (dt) dt.textContent = fmt.format(new Date()).replace(',','').toUpperCase(); };
   tick(); setInterval(tick,30000);
 
+  document.querySelectorAll('.oak-shortcuts-secondary .oak-shortcut span').forEach(span => {
+    span.textContent = 'Info';
+  });
+
   const labelMap = [
-    ['profile','Voicebank'],['contact','Contact'],['about','About'],['readme','Archive'],['files','Archive']
+    ['profile','Info'],['contact','Contact'],['about','About'],['readme','Archive'],['files','Archive']
   ];
   document.querySelectorAll('.taskbar>a').forEach(a => {
-    if (a.dataset.label) return;
     const href = a.getAttribute('href') || '';
+    if (a.dataset.label === 'Voicebank' || href.includes('profile')) {
+      a.dataset.label = 'Info';
+      return;
+    }
+    if (a.dataset.label) return;
     const found = labelMap.find(([key]) => href.includes(key));
     a.dataset.label = found ? found[1] : 'Home';
   });

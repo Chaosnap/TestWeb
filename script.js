@@ -1,188 +1,69 @@
 (() => {
-  const clock = document.getElementById('datetime');
+  const dt = document.querySelector('#datetime');
+  const fmt = new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false});
+  const tick = () => { if (dt) dt.textContent = fmt.format(new Date()).replace(',','').toUpperCase(); };
+  tick(); setInterval(tick,30000);
 
-  function updateClock() {
-    if (!clock) return;
-    const now = new Date();
-    const date = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(now);
-    const time = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
-    clock.textContent = `${date} ${time}`;
-  }
-
-  updateClock();
-  window.setInterval(updateClock, 15000);
-
-  // Desktop search: visually filters shortcuts/folders without navigating away.
-  const search = document.getElementById('desktopSearch');
-  const hint = document.getElementById('searchHint');
-  const searchable = [...document.querySelectorAll('[data-search]')];
-
-  if (search) {
-    search.addEventListener('input', () => {
-      const q = search.value.trim().toLowerCase();
-      let matches = 0;
-
-      searchable.forEach((item) => {
-        const haystack = (item.dataset.search || item.textContent || '').toLowerCase();
-        const matched = !q || haystack.includes(q);
-        item.classList.toggle('search-hidden', !!q && !matched);
-        item.classList.toggle('search-match', !!q && matched);
-        if (q && matched) matches += 1;
-      });
-
-      if (!hint) return;
-      if (!q) {
-        hint.classList.remove('show');
-        hint.textContent = '';
-      } else {
-        hint.textContent = matches ? `${matches} desktop item${matches === 1 ? '' : 's'} found` : 'Nothing found on this desktop';
-        hint.classList.add('show');
-      }
+  let topZ = 40;
+  document.querySelectorAll('.draggable').forEach(win => {
+    const handle = win.querySelector('.drag-handle');
+    if(!handle) return;
+    const focus = () => { win.style.zIndex = ++topZ; };
+    win.addEventListener('pointerdown',focus);
+    handle.addEventListener('pointerdown',e => {
+      if (e.button !== 0) return;
+      focus();
+      const desk = win.closest('.desktop');
+      const wr = win.getBoundingClientRect(), dr = desk.getBoundingClientRect();
+      const sx = e.clientX, sy = e.clientY;
+      const startLeft = wr.left - dr.left, startTop = wr.top - dr.top;
+      win.style.right='auto'; win.style.bottom='auto';
+      win.setPointerCapture?.(e.pointerId);
+      const move = ev => {
+        const x = Math.max(0, Math.min(dr.width - wr.width, startLeft + ev.clientX - sx));
+        const y = Math.max(0, Math.min(dr.height - wr.height, startTop + ev.clientY - sy));
+        win.style.left = x + 'px'; win.style.top = y + 'px';
+      };
+      const up = () => { window.removeEventListener('pointermove',move); window.removeEventListener('pointerup',up); };
+      window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
     });
+  });
 
-    search.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        search.value = '';
-        search.dispatchEvent(new Event('input'));
-        search.blur();
-      }
+  const search = document.querySelector('#desktopSearch');
+  if(search){
+    const items=[...document.querySelectorAll('[data-search]')], hint=document.querySelector('#searchHint');
+    search.addEventListener('input',()=>{
+      const q=search.value.trim().toLowerCase(); let hits=0;
+      items.forEach(el=>{const ok=!q||(el.dataset.search||'').toLowerCase().includes(q); el.classList.toggle('is-hidden',!ok); if(ok&&q) hits++;});
+      if(hint) hint.textContent=q ? `${hits} item${hits===1?'':'s'} matched` : '';
     });
   }
 
-  // Bring clicked windows forward and allow dragging from their title areas.
-  const desktop = document.getElementById('desktop');
-  const shell = document.querySelector('.desktop-window');
-  const windows = [...document.querySelectorAll('.window')];
-  let z = 30;
-
-  function focusWindow(win) {
-    windows.forEach((item) => item.classList.remove('is-focused'));
-    win.classList.add('is-focused');
-    win.style.zIndex = String(++z);
+  const play = document.querySelector('#playPauseBtn'), trackTime=document.querySelector('#trackTime');
+  let ctx=null, timer=null, step=0, started=0;
+  const notes=[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,587.33,440,349.23];
+  function chirp(freq,when,dur=.12){
+    const osc=ctx.createOscillator(), gain=ctx.createGain();
+    osc.type='square'; osc.frequency.setValueAtTime(freq,when);
+    gain.gain.setValueAtTime(.045,when); gain.gain.exponentialRampToValueAtTime(.001,when+dur);
+    osc.connect(gain).connect(ctx.destination); osc.start(when); osc.stop(when+dur);
   }
-
-  windows.forEach((win) => {
-    win.addEventListener('pointerdown', () => focusWindow(win));
-  });
-
-  document.querySelectorAll('.draggable').forEach((win) => {
-    const handle = win.querySelector('.drag-handle') || win;
-    let dragging = false;
-    let startX = 0;
-    let startY = 0;
-    let left = 0;
-    let top = 0;
-
-    handle.addEventListener('pointerdown', (event) => {
-      if (event.button !== 0 || !desktop || !shell) return;
-      if (event.target.closest('a,button,input')) return;
-      dragging = true;
-      focusWindow(win);
-      const desktopRect = desktop.getBoundingClientRect();
-      const winRect = win.getBoundingClientRect();
-      const scale = shell.getBoundingClientRect().width / shell.offsetWidth || 1;
-      startX = event.clientX;
-      startY = event.clientY;
-      left = (winRect.left - desktopRect.left) / scale;
-      top = (winRect.top - desktopRect.top) / scale;
-      win.style.left = `${left}px`;
-      win.style.top = `${top}px`;
-      win.style.right = 'auto';
-      win.style.bottom = 'auto';
-      handle.setPointerCapture?.(event.pointerId);
-      event.preventDefault();
-    });
-
-    handle.addEventListener('pointermove', (event) => {
-      if (!dragging || !desktop || !shell) return;
-      const scale = shell.getBoundingClientRect().width / shell.offsetWidth || 1;
-      const dx = (event.clientX - startX) / scale;
-      const dy = (event.clientY - startY) / scale;
-      const maxLeft = Math.max(0, desktop.clientWidth - win.offsetWidth - 5);
-      const maxTop = Math.max(0, desktop.clientHeight - win.offsetHeight - 5);
-      win.style.left = `${Math.min(maxLeft, Math.max(0, left + dx))}px`;
-      win.style.top = `${Math.min(maxTop, Math.max(0, top + dy))}px`;
-    });
-
-    const stop = (event) => {
-      if (!dragging) return;
-      dragging = false;
-      try { handle.releasePointerCapture?.(event.pointerId); } catch (_) {}
-    };
-    handle.addEventListener('pointerup', stop);
-    handle.addEventListener('pointercancel', stop);
-  });
-
-  // Tiny synthesized chiptune. No external/copyrighted audio file is required.
-  const playButton = document.getElementById('playPauseBtn');
-  const trackTime = document.getElementById('trackTime');
-  let audioContext = null;
-  let masterGain = null;
-  let timer = null;
-  let timeTimer = null;
-  let step = 0;
-  let elapsed = 0;
-
-  const melody = [659.25, 783.99, 880, 783.99, 659.25, 523.25, 587.33, 659.25, 523.25, 587.33, 659.25, 783.99, 659.25, 587.33, 523.25, 0];
-  const bass = [130.81, 130.81, 174.61, 174.61, 146.83, 146.83, 196, 196];
-
-  function beep(frequency, duration, volume, type = 'square') {
-    if (!audioContext || !masterGain || !frequency) return;
-    const osc = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    const t = audioContext.currentTime;
-    osc.type = type;
-    osc.frequency.setValueAtTime(frequency, t);
-    gain.gain.setValueAtTime(0.0001, t);
-    gain.gain.exponentialRampToValueAtTime(volume, t + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
-    osc.connect(gain);
-    gain.connect(masterGain);
-    osc.start(t);
-    osc.stop(t + duration + 0.02);
+  function startMusic(){
+    ctx ||= new (window.AudioContext||window.webkitAudioContext)(); ctx.resume(); started=Date.now(); step=0;
+    timer=setInterval(()=>{chirp(notes[step%notes.length],ctx.currentTime); step++; const s=Math.floor((Date.now()-started)/1000); if(trackTime) trackTime.textContent=`00:${String(s%60).padStart(2,'0')}`;},180);
+    play.textContent='Ⅱ'; play.setAttribute('aria-label','Pause demo');
   }
+  function stopMusic(){clearInterval(timer);timer=null;play.textContent='▶';play.setAttribute('aria-label','Play demo');}
+  play?.addEventListener('click',()=>timer?stopMusic():startMusic());
 
-  function tick() {
-    beep(melody[step % melody.length], 0.12, 0.11);
-    if (step % 2 === 0) beep(bass[Math.floor(step / 2) % bass.length], 0.18, 0.07, 'triangle');
-    step += 1;
+  const gate=document.querySelector('#termsGate');
+  if(gate){
+    const box=document.querySelector('#agreeTerms'), accept=document.querySelector('#acceptTerms');
+    const sync=()=>accept.disabled=!box.checked; box.addEventListener('change',sync); sync();
+    accept.addEventListener('click',()=>{sessionStorage.setItem('guanhua-files-ok','1'); location.href='../files/';});
+    document.querySelector('#cancelTerms')?.addEventListener('click',()=>location.href='../');
   }
-
-  async function startAudio() {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
-    if (!audioContext) {
-      audioContext = new AudioCtx();
-      masterGain = audioContext.createGain();
-      masterGain.gain.value = 0.45;
-      masterGain.connect(audioContext.destination);
-    }
-    if (audioContext.state === 'suspended') await audioContext.resume();
-    tick();
-    timer = window.setInterval(tick, 165);
-    timeTimer = window.setInterval(() => {
-      elapsed += 1;
-      if (trackTime) trackTime.textContent = `00:${String(elapsed % 60).padStart(2, '0')}`;
-    }, 1000);
-    playButton?.classList.add('is-playing');
-    playButton?.setAttribute('aria-label', 'Pause Yuki theme');
+  if(document.body.dataset.requireGate==='true' && sessionStorage.getItem('guanhua-files-ok')!=='1'){
+    location.replace('../readme/');
   }
-
-  function stopAudio() {
-    window.clearInterval(timer);
-    window.clearInterval(timeTimer);
-    timer = null;
-    timeTimer = null;
-    playButton?.classList.remove('is-playing');
-    playButton?.setAttribute('aria-label', 'Play Yuki theme');
-  }
-
-  playButton?.addEventListener('click', () => {
-    if (timer) stopAudio();
-    else startAudio();
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && timer) stopAudio();
-  });
 })();

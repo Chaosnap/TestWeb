@@ -8,12 +8,15 @@
     .browser-tab{color:#5F3B28;background:#FFAAA7}
     .browser-tab.active{background:#FC6F60!important;color:#F5ECDC!important}
     .browser-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:#FC6F60;z-index:2}
-    .browser-tab:not(.active):hover{background:#5F3B28;color:#F5ECDC}
+    .browser-tab:not(.active):hover{background:#FFAAA7;color:#5F3B28}
     .browser-plus{background:#F5ECDC;color:#5F3B28}
     .browser-tab-spacer{flex:1;background:#F5ECDC}
     .browser-controls{width:112px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;background:#F5ECDC}
-    .browser-controls img{height:14px;width:auto}
-    .browser-chrome{padding-left:15px;padding-right:15px}
+    .browser-controls img{height:18px;width:auto}
+    .browser-chrome{padding-left:15px;padding-right:15px;gap:16px}
+    .browser-nav-left,.browser-nav-right{display:flex;align-items:center;gap:16px;flex:0 0 auto}
+    .browser-chrome .nav-icon{height:24px;width:auto;display:block}
+    .browser-chrome .address{margin:0 2px}
     .status-bar img{height:20px!important;width:auto!important}
   </style>
 </head>
@@ -27,7 +30,7 @@
       <a class="oak-shortcut" href="../contact/"><img src="https://oakinstituto.top/svg/1contact.svg" alt="Email"><span>e-mail</span></a>
       <a class="oak-shortcut" href="../about/"><img src="https://oakinstituto.top/svg/1about.svg" alt="About"><span>about.doc</span></a>
     </div>
-    <div class="oak-shortcuts oak-shortcuts-secondary"><a class="oak-shortcut" href="../profile/"><img src="https://oakinstituto.top/svg/0voicebank.svg" alt="Voicebank"><span>voicebank</span></a></div>
+    <div class="oak-shortcuts oak-shortcuts-secondary"><a class="oak-shortcut" href="../profile/"><img src="https://oakinstituto.top/svg/0voicebank.svg" alt="Info"><span>Info</span></a></div>
 
     <article class="window preview-folder-window" aria-hidden="true">
       <div class="oak-window-bar red"><img src="https://oakinstituto.top/svg/1buttons.svg" alt=""></div>
@@ -38,12 +41,20 @@
     <article class="window browser-window" id="termsGate">
       <div class="browser-tabs">
         <button class="browser-tab active" type="button" data-lang="en">ENGLISH</button>
-        <button class="browser-tab" type="button" data-lang="zh">中文</button>
+        <button class="browser-tab" type="button" data-lang="zh">CHINESE</button>
         <div class="browser-plus">＋</div>
         <div class="browser-tab-spacer"></div>
         <div class="browser-controls"><img src="https://oakinstituto.top/svg/1buttons.svg" alt="Window controls"></div>
       </div>
-      <div class="browser-chrome"><span class="chrome-button">←</span><span class="chrome-button">→</span><span>⌕</span><div class="address"></div><span class="chrome-button">↻</span></div>
+      <div class="browser-chrome">
+        <div class="browser-nav-left">
+          <img src="https://oakinstituto.top/svg/2arrowleft.svg" alt="Back" class="nav-icon">
+          <img src="https://oakinstituto.top/svg/2arrowright.svg" alt="Forward" class="nav-icon">
+          <img src="https://oakinstituto.top/svg/2arrowsearch.svg" alt="Search" class="nav-icon">
+        </div>
+        <div class="address"></div>
+        <div class="browser-nav-right"><img src="https://oakinstituto.top/svg/2refresh.svg" alt="Refresh" class="nav-icon"></div>
+      </div>
       <div class="browser-body">
         <section class="language-panel active" data-panel="en">
           <ul class="term-list"><li>This is a personal archive, not a public download dump.</li><li>Please ask before reposting or redistributing modified versions of anything here.</li></ul>
@@ -67,7 +78,7 @@
       </div>
     </article>
 
-    <nav class="taskbar"><a href="../" data-label="Home"><img src="https://oakinstituto.top/svg/0home.svg" alt="Home"></a><a href="./" data-label="Archive"><img src="https://oakinstituto.top/svg/0ust.svg" alt="Archive"></a><a href="../profile/" data-label="Voicebank"><img src="https://oakinstituto.top/svg/0voicebank.svg" alt="Voicebank"></a><a href="../contact/" data-label="Contact"><img src="https://oakinstituto.top/svg/0contact.svg" alt="Contact"></a><a href="../about/" data-label="About"><img src="https://oakinstituto.top/svg/0about.svg" alt="About"></a></nav>
+    <nav class="taskbar"><a href="../" data-label="Home"><img src="https://oakinstituto.top/svg/0home.svg" alt="Home"></a><a href="./" data-label="Archive"><img src="https://oakinstituto.top/svg/0ust.svg" alt="Archive"></a><a href="../profile/" data-label="Info"><img src="https://oakinstituto.top/svg/0voicebank.svg" alt="Info"></a><a href="../contact/" data-label="Contact"><img src="https://oakinstituto.top/svg/0contact.svg" alt="Contact"></a><a href="../about/" data-label="About"><img src="https://oakinstituto.top/svg/0about.svg" alt="About"></a></nav>
   </section>
 </main>
 <section class="mobile-message"><h1>README</h1><p>Please use a larger screen for the full confirmation window.</p></section>
